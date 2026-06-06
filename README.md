@@ -1,7 +1,7 @@
 CampusCart is a simple ecommerce website built during the NST Bootcamp hackathon.
 
 It is designed for college students to browse and view basic products like hoodies, stationery, and gadgets with a clean and modern UI.
-
+The link: https://campuscart-store.lovable.app/
 Features:
 Simple product listing page
 Add to cart functionality
