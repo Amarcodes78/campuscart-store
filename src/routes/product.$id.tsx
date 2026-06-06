@@ -1,5 +1,5 @@
 import { createFileRoute, Link, notFound, useNavigate } from "@tanstack/react-router";
-import { PRODUCTS } from "@/lib/products";
+import { PRODUCTS, type Product } from "@/lib/products";
 import { useCart } from "@/lib/cart";
 import { Minus, Plus, Star, ArrowLeft } from "lucide-react";
 import { useState } from "react";
@@ -109,7 +109,7 @@ function ProductPage() {
       <section className="mt-14">
         <h2 className="mb-5 font-display text-2xl font-bold">What students are saying</h2>
         <div className="grid gap-4 md:grid-cols-2">
-          {product.reviews.map((r, i) => (
+          {product.reviews.map((r: Product["reviews"][number], i: number) => (
             <div key={i} className="glass rounded-2xl p-5">
               <div className="flex items-center justify-between">
                 <span className="text-sm font-semibold">{r.author}</span>
