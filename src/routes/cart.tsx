@@ -1,5 +1,6 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { useCart } from "@/lib/cart";
+import { addOrder, makeOrderId } from "@/lib/orders";
 import { Minus, Plus, Trash2, ShoppingBag } from "lucide-react";
 
 export const Route = createFileRoute("/cart")({
@@ -14,8 +15,32 @@ export const Route = createFileRoute("/cart")({
 
 function CartPage() {
   const { detailed, setQty, remove, subtotal, count, clear } = useCart();
+  const navigate = useNavigate();
   const shipping = subtotal > 50 || subtotal === 0 ? 0 : 4.99;
   const total = subtotal + shipping;
+
+  function checkout() {
+    if (detailed.length === 0) return;
+    addOrder({
+      id: makeOrderId(),
+      createdAt: new Date().toISOString(),
+      items: detailed.map(({ product, qty }) => ({
+        productId: product.id,
+        qty,
+        name: product.name,
+        price: product.price,
+        emoji: product.emoji,
+        gradient: product.gradient,
+      })),
+      subtotal,
+      shipping,
+      total,
+      status: "Processing",
+    });
+    clear();
+    navigate({ to: "/orders" });
+  }
+
 
   if (count === 0) {
     return (
@@ -125,7 +150,7 @@ function CartPage() {
             </div>
           </div>
           <button
-            onClick={() => alert("Checkout coming soon — your wallet survives another day.")}
+            onClick={checkout}
             className="mt-6 w-full rounded-full btn-glow animate-glow py-3 text-sm"
           >
             Checkout
