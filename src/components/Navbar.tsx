@@ -54,6 +54,7 @@ export function Navbar() {
               </span>
             )}
           </Link>
+          </div>
         </nav>
       </div>
     </header>
