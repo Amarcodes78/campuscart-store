@@ -150,7 +150,7 @@ function CartPage() {
             </div>
           </div>
           <button
-            onClick={() => alert("Checkout coming soon — your wallet survives another day.")}
+            onClick={checkout}
             className="mt-6 w-full rounded-full btn-glow animate-glow py-3 text-sm"
           >
             Checkout
