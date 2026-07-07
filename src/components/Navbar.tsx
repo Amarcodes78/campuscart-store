@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { ShoppingCart, Sparkles } from "lucide-react";
+import { ShoppingCart, Sparkles, User } from "lucide-react";
 import { useCart } from "@/lib/cart";
 
 export function Navbar() {
@@ -20,6 +20,7 @@ export function Navbar() {
             {[
               { to: "/", label: "Home" },
               { to: "/shop", label: "Shop" },
+              { to: "/orders", label: "Orders" },
               { to: "/about", label: "About" },
             ].map((l) => (
               <Link
@@ -33,6 +34,14 @@ export function Navbar() {
               </Link>
             ))}
           </div>
+          <div className="flex items-center gap-2">
+          <Link
+            to="/profile"
+            className="inline-flex items-center gap-2 rounded-xl glass px-3 py-2 text-sm hover:bg-white/10 transition-all hover:-translate-y-0.5"
+            aria-label="Profile"
+          >
+            <User className="h-4 w-4" />
+          </Link>
           <Link
             to="/cart"
             className="relative inline-flex items-center gap-2 rounded-xl glass px-3 py-2 text-sm hover:bg-white/10 transition-all hover:-translate-y-0.5"
