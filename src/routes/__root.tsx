@@ -135,6 +135,7 @@ function RootComponent() {
           <Outlet />
         </main>
         <Footer />
+        <ChatWidget />
       </CartProvider>
     </QueryClientProvider>
   );
